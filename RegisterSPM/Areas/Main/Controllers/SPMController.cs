@@ -357,19 +357,19 @@ namespace RegisterSPM.Areas.Main.Controllers
             switch (status)
             {
                 case SD.Registered:
-                    result = await _unitOfWork.SPM.GetAllAsync(x => x.DocStatus == SD.Registered);
+                    result = await _unitOfWork.SPM.GetAllAsync(x => x.DocStatus == SD.Registered, orderBy: s => s.OrderByDescending(x => x.Id));
                     break;
                 case SD.Verified:
-                    result = await _unitOfWork.SPM.GetAllAsync(x => x.DocStatus == SD.Verified);
+                    result = await _unitOfWork.SPM.GetAllAsync(x => x.DocStatus == SD.Verified, orderBy: s => s.OrderByDescending(x => x.Id));
                     break;
                 case SD.Approved:
-                    result = await _unitOfWork.SPM.GetAllAsync(x => x.DocStatus == SD.Approved);
+                    result = await _unitOfWork.SPM.GetAllAsync(x => x.DocStatus == SD.Approved, orderBy: s => s.OrderByDescending(x => x.Id));
                     break;
                 case SD.Rejected:
-                    result = await _unitOfWork.SPM.GetAllAsync(x => x.DocStatus == SD.Rejected);
+                    result = await _unitOfWork.SPM.GetAllAsync(x => x.DocStatus == SD.Rejected, orderBy: s => s.OrderByDescending(x => x.Id));
                     break;
                 default:
-                    result = await _unitOfWork.SPM.GetAllAsync();
+                    result = await _unitOfWork.SPM.GetAllAsync(, orderBy: s => s.OrderByDescending(x => x.Id));
                     break;
             }
 
